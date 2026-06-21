@@ -1,18 +1,19 @@
-import { Faker, en, de, uk } from "@faker-js/faker";
-import { makeRng, pick, combineSeed, RNG } from "./rng";
+import { faker as fakerEN } from "@faker-js/faker/locale/en";
+import { faker as fakerDE } from "@faker-js/faker/locale/de";
+import { faker as fakerUK } from "@faker-js/faker/locale/uk";
+import type { Faker } from "@faker-js/faker";
+import { makeRng, pick, combineSeed } from "./rng";
+import type { Locale } from "../types";
 
-type LocaleKey = "en-US" | "de-DE" | "uk-UA";
-
-const fakerInstances: Record<LocaleKey, Faker> = {
-  "en-US": new Faker({ locale: [en] }),
-  "de-DE": new Faker({ locale: [de, en] }),
-  "uk-UA": new Faker({ locale: [uk, en] }),
-};
-
-// Locale-specific genre lists — loaded from config, not hardcoded in logic
-import genres from "../locales/genres.json";
+import genres    from "../locales/genres.json";
 import adjectives from "../locales/adjectives.json";
-import nouns from "../locales/nouns.json";
+import nouns     from "../locales/nouns.json";
+
+const fakerInstances: Record<Locale, Faker> = {
+  "en-US": fakerEN,
+  "de-DE": fakerDE,
+  "uk-UA": fakerUK,
+};
 
 export interface SongRecord {
   index: number;
@@ -25,10 +26,11 @@ export interface SongRecord {
   coverSeed: string;
 }
 
+type RNG = ReturnType<typeof makeRng>;
+
 function generateArtist(faker: Faker, rng: RNG): string {
   const isBand = rng() < 0.45;
   if (isBand) {
-    // band name patterns
     const patterns = [
       () => `The ${faker.word.adjective()} ${faker.word.noun()}s`,
       () => `${faker.word.adjective()} ${faker.word.noun()}`,
@@ -40,12 +42,9 @@ function generateArtist(faker: Faker, rng: RNG): string {
   return faker.person.fullName();
 }
 
-function generateTitle(
-  locale: LocaleKey,
-  rng: RNG
-): string {
-  const adjs = (adjectives as Record<LocaleKey, string[]>)[locale];
-  const ns = (nouns as Record<LocaleKey, string[]>)[locale];
+function generateTitle(locale: Locale, rng: RNG): string {
+  const adjs = (adjectives as Record<Locale, string[]>)[locale];
+  const ns   = (nouns     as Record<Locale, string[]>)[locale];
   const patterns = [
     () => `${pick(adjs, rng)} ${pick(ns, rng)}`,
     () => pick(ns, rng),
@@ -55,14 +54,10 @@ function generateTitle(
   return pick(patterns, rng)();
 }
 
-function generateAlbum(
-  locale: LocaleKey,
-  rng: RNG,
-  faker: Faker
-): string {
+function generateAlbum(locale: Locale, rng: RNG, faker: Faker): string {
   if (rng() < 0.25) return "Single";
-  const adjs = (adjectives as Record<LocaleKey, string[]>)[locale];
-  const ns = (nouns as Record<LocaleKey, string[]>)[locale];
+  const adjs = (adjectives as Record<Locale, string[]>)[locale];
+  const ns   = (nouns     as Record<Locale, string[]>)[locale];
   const patterns = [
     () => `${pick(adjs, rng)} ${pick(ns, rng)}`,
     () => faker.word.words({ count: { min: 1, max: 3 } }),
@@ -71,41 +66,52 @@ function generateAlbum(
   return pick(patterns, rng)();
 }
 
-export function generatePage(
-  locale: LocaleKey,
-  userSeed: string,
-  page: number,
-  pageSize: number,
-  avgLikes: number
-): SongRecord[] {
-  const faker = fakerInstances[locale];
-  const pageSeed = combineSeed(userSeed, page);
-  const contentRng = makeRng(pageSeed);
-  // Separate RNG for likes — seeded from contentRng so it's independent per record
-  const likesRng = makeRng(`likes-${pageSeed}-${avgLikes}`);
+// p.lebedev fractional likes
+function timesLikes(
+    n: number,
+    fn: (x: number) => number,
+    rng: RNG
+): (x: number) => number {
+  if (n < 0) throw new Error("n must be non-negative");
+  return (arg: number) => {
+    for (let i = Math.floor(n); i-- > 0;) arg = fn(arg);
+    return rng() < n % 1 ? fn(arg) : arg;
+  };
+}
 
+export function generatePage(
+    locale: Locale,
+    userSeed: string,
+    page: number,
+    pageSize: number,
+    avgLikes: number
+): SongRecord[] {
+  const faker     = fakerInstances[locale];
+  const pageSeed  = combineSeed(userSeed, page);
   const records: SongRecord[] = [];
   const startIndex = page * pageSize + 1;
 
   for (let i = 0; i < pageSize; i++) {
-    // Seed each record's content RNG independently
+    // Independent RNG per record for core content
     const recordSeed = `${pageSeed}-record-${i}`;
     const rRng = makeRng(recordSeed);
 
-    const title = generateTitle(locale, rRng);
+    const title  = generateTitle(locale, rRng);
     const artist = generateArtist(faker, rRng);
-    const album = generateAlbum(locale, rRng, faker);
-    const genre = pick((genres as Record<LocaleKey, string[]>)[locale], rRng);
+    const album  = generateAlbum(locale, rRng, faker);
+    const genre  = pick(
+        (genres as Record<Locale, string[]>)[locale],
+        rRng
+    );
 
-    // Likes: use p.lebedev's fractional approach
-    const lRng = makeRng(`${pageSeed}-likes-${i}`);
-    const addLike = (n: number) => n + 1;
-    const likeFn = timesLikes(avgLikes, addLike, lRng);
-    const likes = likeFn(0);
+    // Independent RNG for likes — changing avgLikes never affects titles
+    const lRng   = makeRng(`${pageSeed}-likes-${i}`);
+    const likeFn = timesLikes(avgLikes, x => x + 1, lRng);
+    const likes  = likeFn(0);
 
-    // Review text — separate seed so it doesn't affect core fields
-    const reviewRng = makeRng(`${pageSeed}-review-${i}`);
-    faker.seed(reviewRng() * 2 ** 32);
+    // Independent RNG for review text
+    const revRng = makeRng(`${pageSeed}-review-${i}`);
+    faker.seed(Math.floor(revRng() * 2 ** 31));
     const reviewText = faker.lorem.sentences({ min: 2, max: 4 });
 
     records.push({
@@ -123,15 +129,3 @@ export function generatePage(
   return records;
 }
 
-// Inline fractional times specifically for likes (returns number)
-function timesLikes(
-  n: number,
-  fn: (x: number) => number,
-  rng: RNG
-): (x: number) => number {
-  if (n < 0) throw new Error("n must be non-negative");
-  return (arg: number) => {
-    for (let i = Math.floor(n); i-- > 0; ) arg = fn(arg);
-    return rng() < n % 1 ? fn(arg) : arg;
-  };
-}

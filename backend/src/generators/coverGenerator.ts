@@ -1,5 +1,7 @@
-import { createCanvas, registerFont, Canvas } from "canvas";
+import { createCanvas } from "@napi-rs/canvas";
 import { makeRng, pick, randInt, randFloat } from "./rng";
+
+type RNG = ReturnType<typeof makeRng>;
 
 const COVER_SIZE = 400;
 
@@ -20,16 +22,19 @@ export function generateCoverBuffer(opts: CoverOptions): Buffer {
   const ctx = canvas.getContext("2d");
   const rng = makeRng(opts.seed);
 
-  const style = pick<ArtStyle>(["geometric", "wave", "radial", "portrait", "abstract"], rng);
+  const style = pick<ArtStyle>(
+      ["geometric", "wave", "radial", "portrait", "abstract"],
+      rng
+  );
 
-  // --- Background ---
+  // Background gradient
   const h1 = randInt(0, 360, rng);
   const h2 = (h1 + randInt(30, 180, rng)) % 360;
   const grad = ctx.createLinearGradient(
-    randFloat(0, COVER_SIZE, rng),
-    randFloat(0, COVER_SIZE, rng),
-    randFloat(0, COVER_SIZE, rng),
-    randFloat(0, COVER_SIZE, rng)
+      randFloat(0, COVER_SIZE, rng),
+      randFloat(0, COVER_SIZE, rng),
+      randFloat(0, COVER_SIZE, rng),
+      randFloat(0, COVER_SIZE, rng)
   );
   grad.addColorStop(0, hsl(h1, 70, 25));
   grad.addColorStop(0.5, hsl((h1 + h2) / 2, 60, 15));
@@ -37,53 +42,43 @@ export function generateCoverBuffer(opts: CoverOptions): Buffer {
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, COVER_SIZE, COVER_SIZE);
 
-  // --- Art layer depending on style ---
+  // Art layer
   switch (style) {
-    case "geometric":
-      drawGeometric(ctx, rng);
-      break;
-    case "wave":
-      drawWaves(ctx, rng);
-      break;
-    case "radial":
-      drawRadial(ctx, rng);
-      break;
-    case "portrait":
-      drawPortrait(ctx, rng);
-      break;
-    case "abstract":
-      drawAbstract(ctx, rng);
-      break;
+    case "geometric": drawGeometric(ctx, rng); break;
+    case "wave":      drawWaves(ctx, rng);     break;
+    case "radial":    drawRadial(ctx, rng);    break;
+    case "portrait":  drawPortrait(ctx, rng);  break;
+    case "abstract":  drawAbstract(ctx, rng);  break;
   }
 
-  // --- Overlay gradient for text readability ---
-  const overlay = ctx.createLinearGradient(0, COVER_SIZE * 0.55, 0, COVER_SIZE);
+  // Dark overlay for text readability
+  const overlay = ctx.createLinearGradient(0, COVER_SIZE * 0.5, 0, COVER_SIZE);
   overlay.addColorStop(0, "rgba(0,0,0,0)");
-  overlay.addColorStop(1, "rgba(0,0,0,0.85)");
+  overlay.addColorStop(1, "rgba(0,0,0,0.88)");
   ctx.fillStyle = overlay;
   ctx.fillRect(0, 0, COVER_SIZE, COVER_SIZE);
 
-  // --- Text: Artist ---
-  ctx.fillStyle = "rgba(255,255,255,0.9)";
-  ctx.font = `bold ${Math.min(28, Math.floor(COVER_SIZE * 0.065))}px sans-serif`;
+  // Artist name
+  ctx.fillStyle = "rgba(255,255,255,0.85)";
+  ctx.font = `bold 26px sans-serif`;
   ctx.textAlign = "center";
-  wrapText(ctx, opts.artist.toUpperCase(), COVER_SIZE / 2, COVER_SIZE - 80, COVER_SIZE - 32, 32);
+  wrapText(ctx, opts.artist.toUpperCase(), COVER_SIZE / 2, COVER_SIZE - 72, COVER_SIZE - 32, 30);
 
-  // --- Text: Title ---
+  // Song title
   ctx.fillStyle = "#ffffff";
-  ctx.font = `${Math.min(22, Math.floor(COVER_SIZE * 0.052))}px sans-serif`;
-  wrapText(ctx, opts.title, COVER_SIZE / 2, COVER_SIZE - 28, COVER_SIZE - 32, 26);
+  ctx.font = `20px sans-serif`;
+  wrapText(ctx, opts.title, COVER_SIZE / 2, COVER_SIZE - 24, COVER_SIZE - 32, 24);
 
-  return canvas.toBuffer("image/png");
+  return canvas.toBuffer("image/png") as Buffer;
 }
 
 function wrapText(
-  ctx: CanvasRenderingContext2D,
-  text: string,
-  x: number,
-  y: number,
-  maxWidth: number,
-  lineHeight: number
+    ctx: ReturnType<typeof createCanvas>["getContext"] extends (c: "2d") => infer R ? R : never,
+    text: string,
+    x: number,
+    y: number,
+    maxWidth: number,
+    lineHeight: number
 ) {
   const words = text.split(" ");
   let line = "";
@@ -104,7 +99,7 @@ function wrapText(
   }
 }
 
-function drawGeometric(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof makeRng>) {
+function drawGeometric(ctx: any, rng: RNG) {
   const count = randInt(6, 18, rng);
   for (let i = 0; i < count; i++) {
     const x = randFloat(-50, COVER_SIZE + 50, rng);
@@ -112,11 +107,11 @@ function drawGeometric(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof mak
     const size = randFloat(20, 150, rng);
     const h = randInt(0, 360, rng);
     const alpha = randFloat(0.1, 0.55, rng);
+    const sides = pick([3][4][5][6][8], rng);
     ctx.save();
     ctx.globalAlpha = alpha;
     ctx.translate(x, y);
     ctx.rotate(randFloat(0, Math.PI * 2, rng));
-    const sides = pick([3][4][5][6][8], rng);
     ctx.beginPath();
     for (let s = 0; s < sides; s++) {
       const angle = (s / sides) * Math.PI * 2;
@@ -131,19 +126,18 @@ function drawGeometric(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof mak
   }
 }
 
-function drawWaves(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof makeRng>) {
+function drawWaves(ctx: any, rng: RNG) {
   const waveCount = randInt(5, 12, rng);
   for (let w = 0; w < waveCount; w++) {
     const yBase = (w / waveCount) * COVER_SIZE;
-    const amp = randFloat(15, 60, rng);
-    const freq = randFloat(0.01, 0.04, rng);
+    const amp   = randFloat(15, 60, rng);
+    const freq  = randFloat(0.01, 0.04, rng);
     const phase = randFloat(0, Math.PI * 2, rng);
-    const h = randInt(0, 360, rng);
+    const h     = randInt(0, 360, rng);
     ctx.beginPath();
     ctx.moveTo(0, yBase);
     for (let x = 0; x <= COVER_SIZE; x += 4) {
-      const y = yBase + Math.sin(x * freq + phase) * amp;
-      ctx.lineTo(x, y);
+      ctx.lineTo(x, yBase + Math.sin(x * freq + phase) * amp);
     }
     ctx.lineTo(COVER_SIZE, COVER_SIZE);
     ctx.lineTo(0, COVER_SIZE);
@@ -155,7 +149,7 @@ function drawWaves(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof makeRng
   }
 }
 
-function drawRadial(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof makeRng>) {
+function drawRadial(ctx: any, rng: RNG) {
   const rings = randInt(4, 10, rng);
   const cx = COVER_SIZE / 2 + randFloat(-60, 60, rng);
   const cy = COVER_SIZE / 2 + randFloat(-60, 60, rng);
@@ -172,9 +166,8 @@ function drawRadial(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof makeRn
     ctx.fill();
     ctx.globalAlpha = 1;
   }
-  // spokes
   const spokes = randInt(6, 16, rng);
-  ctx.strokeStyle = `rgba(255,255,255,0.15)`;
+  ctx.strokeStyle = "rgba(255,255,255,0.15)";
   ctx.lineWidth = 1;
   for (let s = 0; s < spokes; s++) {
     const angle = (s / spokes) * Math.PI * 2;
@@ -185,11 +178,9 @@ function drawRadial(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof makeRn
   }
 }
 
-function drawPortrait(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof makeRng>) {
-  // Stylized abstract "figure" using circles and ellipses
+function drawPortrait(ctx: any, rng: RNG) {
   const cx = COVER_SIZE / 2;
-  const h = randInt(0, 360, rng);
-  // Body
+  const h  = randInt(0, 360, rng);
   ctx.save();
   ctx.globalAlpha = 0.6;
   const bodyGrad = ctx.createRadialGradient(cx, 260, 10, cx, 280, 120);
@@ -199,13 +190,16 @@ function drawPortrait(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof make
   ctx.beginPath();
   ctx.ellipse(cx, 310, 80 + randFloat(-10, 20, rng), 130, 0, 0, Math.PI * 2);
   ctx.fill();
-  // Head
   ctx.beginPath();
-  ctx.arc(cx + randFloat(-10, 10, rng), 170 + randFloat(-10, 10, rng), 55 + randFloat(-5, 15, rng), 0, Math.PI * 2);
+  ctx.arc(
+      cx + randFloat(-10, 10, rng),
+      170 + randFloat(-10, 10, rng),
+      55 + randFloat(-5, 15, rng),
+      0, Math.PI * 2
+  );
   ctx.fillStyle = hsl((h + 20) % 360, 55, 55);
   ctx.fill();
   ctx.restore();
-  // Glow
   const glow = ctx.createRadialGradient(cx, 200, 10, cx, 200, 200);
   glow.addColorStop(0, `hsla(${h},80%,70%,0.3)`);
   glow.addColorStop(1, "transparent");
@@ -213,17 +207,16 @@ function drawPortrait(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof make
   ctx.fillRect(0, 0, COVER_SIZE, COVER_SIZE);
 }
 
-function drawAbstract(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof makeRng>) {
-  // Bezier curves
+function drawAbstract(ctx: any, rng: RNG) {
   const count = randInt(4, 10, rng);
   for (let i = 0; i < count; i++) {
     const h = randInt(0, 360, rng);
     ctx.beginPath();
     ctx.moveTo(randFloat(0, COVER_SIZE, rng), randFloat(0, COVER_SIZE, rng));
     ctx.bezierCurveTo(
-      randFloat(0, COVER_SIZE, rng), randFloat(0, COVER_SIZE, rng),
-      randFloat(0, COVER_SIZE, rng), randFloat(0, COVER_SIZE, rng),
-      randFloat(0, COVER_SIZE, rng), randFloat(0, COVER_SIZE, rng)
+        randFloat(0, COVER_SIZE, rng), randFloat(0, COVER_SIZE, rng),
+        randFloat(0, COVER_SIZE, rng), randFloat(0, COVER_SIZE, rng),
+        randFloat(0, COVER_SIZE, rng), randFloat(0, COVER_SIZE, rng)
     );
     ctx.strokeStyle = hsl(h, 80, 60);
     ctx.lineWidth = randFloat(2, 15, rng);
@@ -231,12 +224,16 @@ function drawAbstract(ctx: CanvasRenderingContext2D, rng: ReturnType<typeof make
     ctx.stroke();
     ctx.globalAlpha = 1;
   }
-  // Paint splatter dots
   const dots = randInt(20, 60, rng);
   for (let d = 0; d < dots; d++) {
     const h = randInt(0, 360, rng);
     ctx.beginPath();
-    ctx.arc(randFloat(0, COVER_SIZE, rng), randFloat(0, COVER_SIZE, rng), randFloat(1, 12, rng), 0, Math.PI * 2);
+    ctx.arc(
+        randFloat(0, COVER_SIZE, rng),
+        randFloat(0, COVER_SIZE, rng),
+        randFloat(1, 12, rng),
+        0, Math.PI * 2
+    );
     ctx.fillStyle = hsl(h, 75, 60);
     ctx.globalAlpha = randFloat(0.3, 0.8, rng);
     ctx.fill();
