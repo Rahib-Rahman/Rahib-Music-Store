@@ -1,0 +1,17 @@
+{
+  "en-US": [
+    "Dream","Heart","Storm","Fire","Shadow","Light","Road","Sky","Rain","Soul",
+    "River","Mountain","City","Ghost","Star","Wave","Echo","Flame","Night","Dawn",
+    "Mirror","Wind","Tide","Crown","Stone","Bridge","Garden","Thunder","Horizon","Moon"
+  ],
+  "de-DE": [
+    "Traum","Herz","Sturm","Feuer","Schatten","Licht","Straße","Himmel","Regen",
+    "Seele","Fluss","Berg","Stadt","Geist","Stern","Welle","Echo","Flamme","Nacht",
+    "Morgen","Spiegel","Wind","Krone","Stein","Brücke","Garten","Donner","Mond","Zeit"
+  ],
+  "uk-UA": [
+    "Мрія","Серце","Буря","Вогонь","Тінь","Світло","Дорога","Небо","Дощ","Душа",
+    "Річка","Гора","Місто","Привид","Зоря","Хвиля","Відлуння","Полум'я","Ніч","Світанок",
+    "Дзеркало","Вітер","Корона","Камінь","Міст","Сад","Грім","Місяць","Час","Простір"
+  ]
+}
