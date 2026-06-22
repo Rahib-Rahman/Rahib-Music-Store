@@ -33,7 +33,7 @@ export default function Toolbar({
         <div className="flex items-center gap-2 mb-3">
           <span className="text-2xl">🎵</span>
           <h1 className="text-xl font-bold bg-gradient-to-r from-brand-400 to-purple-400 bg-clip-text text-transparent">
-            Music Store
+            Rahib Music Store
           </h1>
         </div>
 

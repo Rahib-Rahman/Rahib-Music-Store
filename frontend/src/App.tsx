@@ -44,7 +44,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="border-t border-gray-800 py-4 text-center text-xs text-gray-600">
-        Music Store · All data is procedurally generated
+        Rahib Music Store · All data is procedurally generated
       </footer>
     </div>
   );
