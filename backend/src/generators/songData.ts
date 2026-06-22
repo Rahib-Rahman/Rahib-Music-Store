@@ -91,5 +91,43 @@ export function generatePage(
 ): SongRecord[] {
   const faker      = fakerInstances[locale];
   const pageSeed   = combineSeed(userSeed, page);
-  const start
+  const startIndex = page * pageSize + 1;
+  const records: SongRecord[] = [];
+
+  for (let i = 0; i < pageSize; i++) {
+    // ── Core content — only depends on seed + index, never on avgLikes ────────
+    const recordSeed = `${pageSeed}-record-${i}`;
+    const rRng = makeRng(recordSeed);
+
+    const title  = generateTitle(locale, rRng);
+    const artist = generateArtist(faker, rRng);
+    const album  = generateAlbum(locale, rRng, faker);
+    const genre  = pick(
+        (genres as Record<Locale, string[]>)[locale],
+        rRng
+    );
+
+    // ── Likes — independent RNG so changing avgLikes never affects titles ─────
+    const lRng  = makeRng(`${pageSeed}-likes-${i}`);
+    const likes = timesLikes(avgLikes, x => x + 1, lRng)(0);
+
+    // ── Review — independent RNG seeded separately ────────────────────────────
+    const revRng = makeRng(`${pageSeed}-review-${i}`);
+    faker.seed(Math.floor(revRng() * 2 ** 31));
+    const reviewText = faker.lorem.sentences({ min: 2, max: 4 });
+
+    records.push({
+      index: startIndex + i,
+      title,
+      artist,
+      album,
+      genre,
+      likes,
+      reviewText,
+      coverSeed: `${userSeed}-${page}-${i}`,
+    });
+  }
+
+  return records;
+}
 
