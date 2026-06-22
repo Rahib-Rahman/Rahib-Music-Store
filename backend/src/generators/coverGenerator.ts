@@ -1,6 +1,6 @@
 import { createCanvas } from "@napi-rs/canvas";
 import { makeRng, pick, randInt, randFloat } from "./rng";
-import {Buffer} from "buffer";
+import { Buffer } from "buffer";
 
 type RNG = ReturnType<typeof makeRng>;
 
@@ -108,18 +108,23 @@ function drawGeometric(ctx: any, rng: RNG) {
     const size = randFloat(20, 150, rng);
     const h = randInt(0, 360, rng);
     const alpha = randFloat(0.1, 0.55, rng);
-    const sides = pick([3][4][5][6][8], rng);
+
+    // Fixed: Proper array for number of sides (triangle to octagon)
+    const sides = pick([3, 4, 5, 6, 8], rng);
+
     ctx.save();
     ctx.globalAlpha = alpha;
     ctx.translate(x, y);
     ctx.rotate(randFloat(0, Math.PI * 2, rng));
     ctx.beginPath();
+
     for (let s = 0; s < sides; s++) {
       const angle = (s / sides) * Math.PI * 2;
       const px = Math.cos(angle) * size;
       const py = Math.sin(angle) * size;
       s === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
     }
+
     ctx.closePath();
     ctx.fillStyle = hsl(h, 70, 55);
     ctx.fill();
@@ -131,10 +136,11 @@ function drawWaves(ctx: any, rng: RNG) {
   const waveCount = randInt(5, 12, rng);
   for (let w = 0; w < waveCount; w++) {
     const yBase = (w / waveCount) * COVER_SIZE;
-    const amp   = randFloat(15, 60, rng);
-    const freq  = randFloat(0.01, 0.04, rng);
+    const amp = randFloat(15, 60, rng);
+    const freq = randFloat(0.01, 0.04, rng);
     const phase = randFloat(0, Math.PI * 2, rng);
-    const h     = randInt(0, 360, rng);
+    const h = randInt(0, 360, rng);
+
     ctx.beginPath();
     ctx.moveTo(0, yBase);
     for (let x = 0; x <= COVER_SIZE; x += 4) {
@@ -143,6 +149,7 @@ function drawWaves(ctx: any, rng: RNG) {
     ctx.lineTo(COVER_SIZE, COVER_SIZE);
     ctx.lineTo(0, COVER_SIZE);
     ctx.closePath();
+
     ctx.fillStyle = hsl(h, 65, 40);
     ctx.globalAlpha = randFloat(0.15, 0.4, rng);
     ctx.fill();
@@ -154,12 +161,14 @@ function drawRadial(ctx: any, rng: RNG) {
   const rings = randInt(4, 10, rng);
   const cx = COVER_SIZE / 2 + randFloat(-60, 60, rng);
   const cy = COVER_SIZE / 2 + randFloat(-60, 60, rng);
+
   for (let r = rings; r > 0; r--) {
     const radius = (r / rings) * COVER_SIZE * 0.75;
     const h = randInt(0, 360, rng);
     const radGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
     radGrad.addColorStop(0, hsl(h, 80, 60));
     radGrad.addColorStop(1, hsl((h + 40) % 360, 60, 20));
+
     ctx.beginPath();
     ctx.arc(cx, cy, radius, 0, Math.PI * 2);
     ctx.fillStyle = radGrad;
@@ -167,6 +176,7 @@ function drawRadial(ctx: any, rng: RNG) {
     ctx.fill();
     ctx.globalAlpha = 1;
   }
+
   const spokes = randInt(6, 16, rng);
   ctx.strokeStyle = "rgba(255,255,255,0.15)";
   ctx.lineWidth = 1;
@@ -181,9 +191,10 @@ function drawRadial(ctx: any, rng: RNG) {
 
 function drawPortrait(ctx: any, rng: RNG) {
   const cx = COVER_SIZE / 2;
-  const h  = randInt(0, 360, rng);
+  const h = randInt(0, 360, rng);
   ctx.save();
   ctx.globalAlpha = 0.6;
+
   const bodyGrad = ctx.createRadialGradient(cx, 260, 10, cx, 280, 120);
   bodyGrad.addColorStop(0, hsl(h, 60, 50));
   bodyGrad.addColorStop(1, hsl((h + 30) % 360, 50, 25));
@@ -191,6 +202,7 @@ function drawPortrait(ctx: any, rng: RNG) {
   ctx.beginPath();
   ctx.ellipse(cx, 310, 80 + randFloat(-10, 20, rng), 130, 0, 0, Math.PI * 2);
   ctx.fill();
+
   ctx.beginPath();
   ctx.arc(
       cx + randFloat(-10, 10, rng),
@@ -201,6 +213,7 @@ function drawPortrait(ctx: any, rng: RNG) {
   ctx.fillStyle = hsl((h + 20) % 360, 55, 55);
   ctx.fill();
   ctx.restore();
+
   const glow = ctx.createRadialGradient(cx, 200, 10, cx, 200, 200);
   glow.addColorStop(0, `hsla(${h},80%,70%,0.3)`);
   glow.addColorStop(1, "transparent");
@@ -225,6 +238,7 @@ function drawAbstract(ctx: any, rng: RNG) {
     ctx.stroke();
     ctx.globalAlpha = 1;
   }
+
   const dots = randInt(20, 60, rng);
   for (let d = 0; d < dots; d++) {
     const h = randInt(0, 360, rng);

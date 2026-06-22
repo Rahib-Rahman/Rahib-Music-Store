@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d736a77e-df2d-405c-a2e2-55721f2aa1db" name="Default Changelist" comment="" />
+    <list default="true" id="d736a77e-df2d-405c-a2e2-55721f2aa1db" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +47,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Users\Rahib\AppData\Roaming\npm\node_modules\typescript\lib" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -57,7 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1782098697646</updated>
       <workItem from="1782098699102" duration="3149000" />
-      <workItem from="1782105022442" duration="2213000" />
+      <workItem from="1782105022442" duration="3349000" />
     </task>
     <servers />
   </component>
@@ -96,9 +99,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1343" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1782098812624" />
-    <state x="183" y="8" key="SettingsEditor" timestamp="1782106738309">
+    <state x="183" y="8" key="SettingsEditor" timestamp="1782107759032">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="183" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1782106738309" />
+    <state x="183" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1782107759032" />
   </component>
 </project>
