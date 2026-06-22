@@ -1,7 +1,8 @@
-import { faker as fakerEN } from "@faker-js/faker/locale/en";
-import { faker as fakerDE } from "@faker-js/faker/locale/de";
-import { faker as fakerUK } from "@faker-js/faker/locale/uk";
+import { fakerEN } from "@faker-js/faker/locale/en";
+import { fakerDE } from "@faker-js/faker/locale/de";
+import { fakerUK } from "@faker-js/faker/locale/uk";
 import type { Faker } from "@faker-js/faker";
+
 import { makeRng, pick, combineSeed } from "./rng";
 import type { Locale } from "../types";
 
@@ -66,7 +67,6 @@ function generateAlbum(locale: Locale, rng: RNG, faker: Faker): string {
   return pick(patterns, rng)();
 }
 
-// p.lebedev fractional likes
 function timesLikes(
     n: number,
     fn: (x: number) => number,
@@ -92,7 +92,6 @@ export function generatePage(
   const startIndex = page * pageSize + 1;
 
   for (let i = 0; i < pageSize; i++) {
-    // Independent RNG per record for core content
     const recordSeed = `${pageSeed}-record-${i}`;
     const rRng = makeRng(recordSeed);
 
@@ -104,12 +103,10 @@ export function generatePage(
         rRng
     );
 
-    // Independent RNG for likes — changing avgLikes never affects titles
     const lRng   = makeRng(`${pageSeed}-likes-${i}`);
     const likeFn = timesLikes(avgLikes, x => x + 1, lRng);
     const likes  = likeFn(0);
 
-    // Independent RNG for review text
     const revRng = makeRng(`${pageSeed}-review-${i}`);
     faker.seed(Math.floor(revRng() * 2 ** 31));
     const reviewText = faker.lorem.sentences({ min: 2, max: 4 });
@@ -128,4 +125,3 @@ export function generatePage(
 
   return records;
 }
-
