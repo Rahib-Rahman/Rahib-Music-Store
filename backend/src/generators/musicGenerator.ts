@@ -22,6 +22,10 @@ const SCALES: Record<string, number[]> = {
   pentatonic: [0, 2, 4, 7, 9],
 };
 
+// ← Added this line (the missing SCALE_NAMES)
+
+const SCALE_NAMES = Object.keys(SCALES) as (keyof typeof SCALES)[];
+
 const RHYTHM_PATTERNS: number[][] = [
   [1, 1, 1, 1],
   [0.5, 0.5, 1, 1, 1],
@@ -136,7 +140,7 @@ export async function generateMidiBuffer(seed: string): Promise<Buffer> {
   const bpm   = randInt(72, 155, rng);
   const root  = randInt(48, 60, rng);
 
-  const scaleName = pick(SCALE_NAMES, rng);
+  const scaleName = pick(SCALE_NAMES, rng);   // ← Now works
   const scale     = SCALES[scaleName];
   const prog      = pick(CHORD_PROGRESSIONS, rng);
   const rhythm    = pick(RHYTHM_PATTERNS, rng);

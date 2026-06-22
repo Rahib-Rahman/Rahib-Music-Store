@@ -1,6 +1,6 @@
 import seedrandom from "seedrandom";
 
-export type RNG = ReturnType<typeof seedrandom>;
+export type RNG = () => number;   // More explicit and reliable type
 
 export function combineSeed(userSeed: string, page: number): string {
   return `${userSeed}-page-${page}`;
