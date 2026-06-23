@@ -67,7 +67,7 @@ function generateAlbum(locale: Locale, rng: RNG, faker: Faker): string {
   return pick(patterns, rng)();
 }
 
-// ── p.lebedev fractional times ────────────────────────────────────────────────
+// ── Fractional times ────────────────────────────────────────────────
 // Calls fn exactly floor(n) times, then one more time with probability (n % 1)
 function timesLikes(
     n: number,
