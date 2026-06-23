@@ -5,7 +5,7 @@ interface AudioPlayerProps {
   title: string;
 }
 
-const API_BASE = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+const API_BASE = import.meta.env.VITE_API_URL ?? "https://rahib-music-store.onrender.com";
 
 export default function AudioPlayer({ coverSeed, title }: AudioPlayerProps) {
   const [playing, setPlaying] = useState(false);

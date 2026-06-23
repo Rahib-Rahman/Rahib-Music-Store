@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import type { SongRecord, StoreParams } from "../types/song";
 
-const API_BASE = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+const API_BASE = import.meta.env.VITE_API_URL ?? "https://rahib-music-store.onrender.com";
 const PAGE_SIZE = 10;
 
 // ── Table view: single page ──────────────────────────────────────────────────
