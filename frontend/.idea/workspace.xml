@@ -20,22 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d736a77e-df2d-405c-a2e2-55721f2aa1db" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../backend/dist/generators/coverGenerator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/dist/generators/musicGenerator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/dist/generators/rng.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/dist/generators/songData.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/dist/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/dist/locales/adjectives.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/dist/locales/genres.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/dist/locales/nouns.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/dist/routes/songs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/dist/types/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/generators/songData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/generators/songData.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AudioPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AudioPlayer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +64,7 @@
       <updated>1782098697646</updated>
       <workItem from="1782098699102" duration="3149000" />
       <workItem from="1782105022442" duration="3645000" />
-      <workItem from="1782207340111" duration="3152000" />
+      <workItem from="1782207340111" duration="4120000" />
     </task>
     <servers />
   </component>

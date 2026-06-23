@@ -22,33 +22,50 @@ export default function AudioPlayer({ coverSeed, title }: AudioPlayerProps) {
     audio.preload = "none";
     audioRef.current = audio;
 
-    audio.addEventListener("loadstart", () => setLoading(true));
-    audio.addEventListener("canplay", () => setLoading(false));
-    audio.addEventListener("ended", () => { setPlaying(false); setProgress(0); });
-    audio.addEventListener("error", () => { setError(true); setLoading(false); });
-    audio.addEventListener("timeupdate", () => {
+    const handleLoadStart = () => setLoading(true);
+    const handleCanPlay = () => setLoading(false);
+    const handleEnded = () => { setPlaying(false); setProgress(0); };
+    const handleError = () => { setError(true); setLoading(false); };
+    const handleTimeUpdate = () => {
       if (audio.duration) setProgress(audio.currentTime / audio.duration);
-    });
-    audio.addEventListener("durationchange", () => setDuration(audio.duration));
+    };
+    const handleDurationChange = () => setDuration(audio.duration);
+
+    audio.addEventListener("loadstart", handleLoadStart);
+    audio.addEventListener("canplay", handleCanPlay);
+    audio.addEventListener("ended", handleEnded);
+    audio.addEventListener("error", handleError);
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("durationchange", handleDurationChange);
 
     return () => {
       audio.pause();
       audio.src = "";
+      audio.removeEventListener("loadstart", handleLoadStart);
+      audio.removeEventListener("canplay", handleCanPlay);
+      audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener("error", handleError);
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audio.removeEventListener("durationchange", handleDurationChange);
     };
   }, []);
 
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
+
     if (!audio.src) {
       audio.src = src;
       audio.load();
     }
+
     if (playing) {
       audio.pause();
       setPlaying(false);
     } else {
-      audio.play().then(() => setPlaying(true)).catch(() => setError(true));
+      audio.play()
+          .then(() => setPlaying(true))
+          .catch(() => setError(true));
     }
   }, [playing, src]);
 
@@ -68,54 +85,48 @@ export default function AudioPlayer({ coverSeed, title }: AudioPlayerProps) {
   };
 
   return (
-    <div className="flex items-center gap-3 bg-gray-800/60 rounded-xl px-4 py-3 border border-gray-700">
-      {/* Play/Pause button */}
-      <button
-        onClick={togglePlay}
-        disabled={error}
-        aria-label={playing ? `Pause ${title}` : `Play ${title}`}
-        className="w-10 h-10 rounded-full bg-brand-600 hover:bg-brand-500 disabled:opacity-40
+      <div className="flex items-center gap-3 bg-gray-800/60 rounded-xl px-4 py-3 border border-gray-700">
+        <button
+            onClick={togglePlay}
+            disabled={error || loading}
+            aria-label={playing ? `Pause ${title}` : `Play ${title}`}
+            className="w-10 h-10 rounded-full bg-brand-600 hover:bg-brand-500 disabled:opacity-40
                    flex items-center justify-center transition-all duration-200 flex-shrink-0
                    focus:outline-none focus:ring-2 focus:ring-brand-400 shadow-lg shadow-brand-900/50"
-      >
-        {loading ? (
-          <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-            <path className="opacity-75" fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-          </svg>
-        ) : playing ? (
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-          </svg>
-        ) : (
-          <svg className="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M8 5v14l11-7L8 5z" />
-          </svg>
-        )}
-      </button>
+        >
+          {loading ? (
+              <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+          ) : playing ? (
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+              </svg>
+          ) : (
+              <svg className="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7L8 5z" />
+              </svg>
+          )}
+        </button>
 
-      {/* Progress */}
-      <div className="flex-1 flex flex-col gap-1 min-w-0">
-        <input
-          type="range"
-          min={0}
-          max={1}
-          step={0.001}
-          value={progress}
-          onChange={handleSeek}
-          aria-label="Playback progress"
-          className="w-full h-1.5 bg-gray-600 rounded-full appearance-none cursor-pointer accent-brand-500"
-        />
-        <div className="flex justify-between text-xs text-gray-500">
-          <span>{formatTime(progress * duration)}</span>
-          <span>{formatTime(duration)}</span>
+        <div className="flex-1 flex flex-col gap-1 min-w-0">
+          <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.001}
+              value={progress}
+              onChange={handleSeek}
+              className="w-full h-1.5 bg-gray-600 rounded-full appearance-none cursor-pointer accent-brand-500"
+          />
+          <div className="flex justify-between text-xs text-gray-500">
+            <span>{formatTime(progress * duration)}</span>
+            <span>{formatTime(duration)}</span>
+          </div>
         </div>
-      </div>
 
-      {error && (
-        <span className="text-xs text-red-400 flex-shrink-0">Unavailable</span>
-      )}
-    </div>
+        {error && <span className="text-xs text-red-400">Unavailable</span>}
+      </div>
   );
 }
