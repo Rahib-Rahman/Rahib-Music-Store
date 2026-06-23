@@ -20,126 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d736a77e-df2d-405c-a2e2-55721f2aa1db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../backend/render.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas-win32-x64-msvc/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas-win32-x64-msvc/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas-win32-x64-msvc/skia.win32-x64-msvc.node" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas-win32-x64-msvc/skia.win32-x64-msvc.node" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/geometry.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/geometry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/js-binding.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/js-binding.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/load-image.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/load-image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/node-canvas.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/node-canvas.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/@napi-rs/canvas/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/body-parser/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/body-parser/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/body-parser/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/body-parser/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/body-parser/lib/types/json.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/body-parser/lib/types/json.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/body-parser/lib/types/urlencoded.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/body-parser/lib/types/urlencoded.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/body-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/body-parser/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/cookie-signature/History.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/cookie-signature/History.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/cookie-signature/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/cookie-signature/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/cookie-signature/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/cookie-signature/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/cookie/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/cookie/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/cookie/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/cookie/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/cookie/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/cookie/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/encodeurl/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/encodeurl/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/encodeurl/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/encodeurl/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/encodeurl/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/encodeurl/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/express/History.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/express/History.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/express/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/express/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/express/lib/response.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/express/lib/response.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/express/lib/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/express/lib/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/express/lib/router/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/express/lib/router/route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/express/lib/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/express/lib/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/express/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/express/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/finalhandler/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/finalhandler/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/finalhandler/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/finalhandler/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/finalhandler/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/finalhandler/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/finalhandler/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/finalhandler/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/http-errors/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/http-errors/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/http-errors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/http-errors/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/http-errors/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/http-errors/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/merge-descriptors/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/merge-descriptors/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/merge-descriptors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/merge-descriptors/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/merge-descriptors/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/merge-descriptors/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/.eslintignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/.nvmrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/browser/midiwriter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/build/index.browser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/build/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/examples/chopin-prelude-e-minor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/examples/hot-cross-buns.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/examples/mauro.giuliani-op.47-main-theme.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/examples/notes-by-start-tick.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/examples/zelda-main-theme.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/postinstall.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/rollup.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/runkit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/test/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/test/vexflow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/test/writer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/midi-writer-js/types.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/.eslintignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/.eslintrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/API.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/CHANGELOG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/dist/note-parser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/dist/note-parser.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/rollup.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/test/note-parser-test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/note-parser/yarn.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/path-to-regexp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/path-to-regexp/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/path-to-regexp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/path-to-regexp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/qs/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/.github/SECURITY.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/.github/THREAT_MODEL.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/qs/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/qs/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/dist/qs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/qs/dist/qs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/eslint.config.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/lib/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/qs/lib/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/lib/stringify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/qs/lib/stringify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/lib/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/qs/lib/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/qs/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/test/empty-keys-cases.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/test/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/qs/test/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/test/stringify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/qs/test/stringify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/qs/test/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/qs/test/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/raw-body/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/raw-body/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/raw-body/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/raw-body/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/raw-body/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/raw-body/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/send/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/send/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/send/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/send/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/send/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/send/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/serve-static/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/serve-static/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/serve-static/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/serve-static/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/serve-static/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/serve-static/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/statuses/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/statuses/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/statuses/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/statuses/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/statuses/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/statuses/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/tonal-midi/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/tonal-midi/build/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/tonal-midi/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/tonal-midi/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/tonal-midi/test/midi.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/dist/generators/coverGenerator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/dist/generators/musicGenerator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/dist/generators/rng.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/dist/generators/songData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/dist/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/dist/locales/adjectives.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/dist/locales/genres.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/dist/locales/nouns.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/dist/routes/songs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/dist/types/index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/render.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/render.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +73,7 @@
       <updated>1782098697646</updated>
       <workItem from="1782098699102" duration="3149000" />
       <workItem from="1782105022442" duration="3645000" />
-      <workItem from="1782207340111" duration="5770000" />
+      <workItem from="1782207340111" duration="6364000" />
     </task>
     <servers />
   </component>
