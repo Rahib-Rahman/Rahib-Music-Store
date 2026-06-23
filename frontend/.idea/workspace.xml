@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d736a77e-df2d-405c-a2e2-55721f2aa1db" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +43,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../backend" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="ts.external.directory.path" value="C:\Users\Rahib\AppData\Roaming\npm\node_modules\typescript\lib" />
@@ -60,7 +59,8 @@
       <option name="presentableId" value="Default" />
       <updated>1782098697646</updated>
       <workItem from="1782098699102" duration="3149000" />
-      <workItem from="1782105022442" duration="3349000" />
+      <workItem from="1782105022442" duration="3645000" />
+      <workItem from="1782207340111" duration="1619000" />
     </task>
     <servers />
   </component>
@@ -83,6 +83,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="462" y="118" key="FileChooserDialogImpl" timestamp="1782207734779">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="462" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1782207734779" />
     <state width="1343" height="178" key="GridCell.Tab.0.bottom" timestamp="1782098812624">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
